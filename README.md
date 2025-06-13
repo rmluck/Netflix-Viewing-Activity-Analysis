@@ -1,4 +1,4 @@
-# Netflix Data Project
+# Netflix Data Analysis
 
 Rohan Mistry
 
