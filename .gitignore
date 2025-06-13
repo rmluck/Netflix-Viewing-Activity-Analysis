@@ -1,0 +1,11 @@
+# IDE's project files
+.idea
+
+# vscode
+.vscode
+
+# Mac system files
+.DS_Store
+
+# Python virtual environment
+venv/

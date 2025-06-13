@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 pd.options.mode.chained_assignment = None
 
 
-# STILL NEED TO IMPLEMENT Most Watched Months, Start Times, AND Total Time Watched
+# TODO: STILL NEED TO IMPLEMENT Most Watched Months, Start Times, AND Total Time Watched
 
 
 def ask_for_data() -> pd.DataFrame:
@@ -22,7 +22,12 @@ def ask_for_data() -> pd.DataFrame:
         pd.DataFrame: data from .csv file
     """
 
+    # Prompt for csv file path
     data_file = input("Enter .csv file containing viewing activity: ")
+    if not data_file:
+        data_file = "~/data/viewing_activity.csv"
+    
+    # Read csv file and drop unnecessary data
     df = pd.read_csv(data_file)
     df = _drop_unnecessary_data(df)
 
@@ -40,6 +45,7 @@ def convert_times(df: pd.DataFrame) -> pd.DataFrame:
         pd.DataFrame: updated viewing data with times converted to local timezone
     """
 
+    # Convert times to local timezone
     def utc_to_local(utc_dt):
         return utc_dt.replace(tzinfo=timezone.utc).astimezone(tz=time_zone)
 

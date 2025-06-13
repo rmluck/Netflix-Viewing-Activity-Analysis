@@ -23,7 +23,7 @@ The instructions on how to run the program and how the program functions are lis
 
 Before actually using this program, you will need to retrieve a .csv file containing the viewing activity data of your Netflix account. If you are logged into your Netflix account on your browser, you can go to the "[Get My Info](https://www.netflix.com/account/getmyinfo)" page and this page will appear:
 
-![](/img/netflix_get_my_info_page.png)
+![](/static/img/netflix_get_my_info_page.png)
 
 Click the "Submit Request" button which will send a request to Netflix for your data. They will provide a downloadable report folder which contains many files, including one called __ViewingActivity.csv__. This is the file that contains the viewing activity data necessary for this project. 
 
