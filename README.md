@@ -1,294 +1,134 @@
-# Netflix Data Analysis
+# Netflix Viewing Activity Analysis
 
-Rohan Mistry
+*By Rohan Mistry - Last updated June 13, 2025*
 
-Updated: April 16, 2024
+---
 
-## Overview
+## 📖 Overview
 
-This project aims to analyze the viewing activity of a Netflix account, providing detailed analytics, statistics, and trends to inform the user about the way they use the Netflix service. The program was coded using Python and subsequent Python libraries such as Pandas, Matplotlib, NumPy, and Seaborn. Given a .csv file containing the viewing history of a Netflix account, this program uses past viewing data to conduct analysis and chart graphs based on viewing frequency, viewing duration, viewing location and time, most watched content, and more.
+This project is a web-based application that helps users analyze their Netflix viewing history using interactive charts and filters. This program provides meaningful long-term insights and trends to inform the user about their personal Netflix viewing habits which Netflix does not specifically provide themselves.
 
-## Contents
+**Target Users** are anyone with access to their Netflix "ViewingActivity.csv" file who is curious about thier own watch patterns or wants to visualiez their habits.
 
-This project contains 1 Python file and 1 csv file. The included files are listed below:
+🔗 **Try it live**: [netflix-viewing-activity-analysis.streamlit.app](https://netflix-viewing-activity-analysis.streamlit.app)
 
-* __netflix_viewing_activity.py__: main module that runs the program which analyzes the viewing activity data provided
-* __viewing_activity.csv__: sample viewing activity data used to test program
+<br>
 
-## Program
+![](/static/img/streamlit_demo_application1.png)
 
-The instructions on how to run the program and how the program functions are listed below.
+![](/static/img/streamlit_demo_application2.png)
 
-### Retrieving .csv file with viewing activity data
+---
 
-Before actually using this program, you will need to retrieve a .csv file containing the viewing activity data of your Netflix account. If you are logged into your Netflix account on your browser, you can go to the "[Get My Info](https://www.netflix.com/account/getmyinfo)" page and this page will appear:
+## 📁 Contents
+
+```bash
+├── .streamlit/          # Custom Streamlit theme configuration
+├── data/                # Contains the time_zones.txt file and a sample viewing_activity.csv file
+├── src/
+│   └── viewing_activity_analysis.py   # Core data processing and visualization logic
+├── web/
+│   └── app.py           # Streamlit frontend app
+├── LICENSE                # MIT License
+├── README.md            # Project documentation
+└── requirements.txt     # Python dependencies
+```
+
+---
+
+## 🌟 Features
+
+* **File Upload**: Upload your __ViewingActivity.csv__ file exported from Netflix.
+* **Time Zone Support**: Convert all timestamps to your selected time zone.
+* **Profile Filter**: Choose between different user profiles on your account or All Profiles.
+* **Content Type Filter**: Limit analysis to Movies, TV Shows, or All Content.
+* **Title Filter**: Focus analysis on a specific title or All Titles.
+* **Multiple Analyses**:
+    * Countries
+    * Device Types
+    * Viewing Frequency
+    * Viewing Activity Timeline
+    * Viewing Heat Map
+    * Most Watched Movies
+    * Most Watched Shows
+    * Most Watched Days
+    * Most Watched Episodes
+    * Duration
+* **PNG Download**: Export any chart as an image.
+* **Multi-Analysis Workflow**: Run multiple analyses and view them together.
+
+---
+
+## 🛠️ Installation Instructions
+
+To run the app locally:
+1. Clone the repository:
+```bash
+git clone https://github.com/rmluck/Netflix-Viewing-Activity-Analysis.git
+cd Netflix-Viewing-Activity-Analysis
+```
+2. Set up a virtual environment:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+4. Launch the app:
+```bash
+streamlit run web/app.py
+```
+
+To retrieve the .csv file containing the viewing activity data of your Netflix account, log into your Netflix account on your browser and go to the "[Get My Info](https://www.netflix.com/account/getmyinfo)" page and this page will appear:
 
 ![](/static/img/netflix_get_my_info_page.png)
 
-Click the "Submit Request" button which will send a request to Netflix for your data. They will provide a downloadable report folder which contains many files, including one called __ViewingActivity.csv__. This is the file that contains the viewing activity data necessary for this project. 
+Click the "Submit Request" button which will send a request to Netflix for your data. They will provide a downloadable report folder which contains various files, including one called __ViewingActivity.csv__. This is the file that contains the viewing activity data necessary for this program's input.
 
-### Start program and configure data
+---
 
-Run __netflix_viewing_activity.py__.
+## 💡 Usage
 
-In the opened terminal, the program will display the following message asking you to enter your data file:
+### Sample Input File
 
-```
-Enter .csv file containing viewing activity: |
-```
+### Upload File
 
-Continue by typing in __ViewingActivity.csv__ (unless you renamed your data file):
+### Analysis Output
 
-Assuming you entered a valid filename, the program will proceed by asking you to enter your local time zone to to convert your viewing data's date and time information accordingly.
+---
 
-```
-It is necessary to convert all of your viewing data to the correct time zone.
-What is your local time zone? Specify in the format US/Eastern or US/Pacific: |
-```
+## 🚧 Future Improvements
 
-You need to enter your time zone in the specified format. You can use the [full list of the Pytz library's allowed time zones](https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568) and find yours.
+* Add the following analysis options: Most Watched Months, Start Times, Total Time Watched
+* Dark mode support and advanced theme customization
+* Session history saving
+* Export filtered dataset (__st.download_button__ with __df.to_csv()__)
+* Export all results in a zipped report format or as PDF (__matplotlib__ + __fpdf__ or __ReportLab__)
+* Test with multiple real Netflix files (different formats, languages, profiles, etc.)
+* Handle missing or malformed data more gracefully
+* Add logging for errors or corner cases
+* Unit test functions with __pytest__
+* Combine multiple profiles or titles into a merged view
+* Persistent dashboard layout
+* Filter by date range (__st.date_input__ or __st.slider__) or time of day
+* Search titles (__st.text_input__ and fuzzy matching)
 
-I'm in the Pacific time zone so I'll use US/Pacific.
+---
 
-The next question the program will ask you is whether you would like the program to analyze the data pertaining to your entire Netflix account or to a specific user profile within that account.
+## 🧰 Tech Stack
 
-```
-Would you like to analyze your entire accuont or a specific profile (A or P)? |
-```
+* Python
+* **Frontend**: [Streamlit](https://streamlit.io/)
+* **Data Analysis**: __pandas__, __numpy__
+* **Visualization**: __matplotlib__, __seaborn__
+* **Deployment**: Streamlit Community Cloud
 
-If you answer with 'A', then the program will analyze your entire account. If you enter 'P', then the program will proceed to ask you which profile you would like to analyze:
+## 🙏 Contributions / Acknowledgements
 
-```
-This account's profiles are as follows:
-    Charlie
-    Ryan
-Which profile would you like to analyze? |
-```
+This project was built independently as a portfolio project. Inspired by the growing need to visualize personal data in an engaging and intellectually stimulating way.
 
-Answer with your preferred profile and then the program will continue by asking you whether you would like the program to analyze all viewing activity or viewing activity of only movies or only TV shows. All the Netflix data is separated into movies or TV so you get to choose if you would like them to be grouped or if you want to narrow to one medium:
+## 🪪 License
 
-```
-Would you like to analyze all viewing activity or your viewing activity of only movies or only TV shows (A, M, or TV)? |
-```
-
-If you answer with 'A', then the program will analyze both movies and TV. If you enter 'M', then the program will only observe movies. If you enter 'TV', then the program will only observe TV.
-
-If you choose specifically movies or TV, then the program will follow up by asking whether you would like to analyze all titles or a specific title.
-
-For instance, if you chose movies in the previous question, then the program will show this prompt:
-
-```
-Would you like to analyze all movies or a specific title (A or S)? |
-```
-
-If you chose TV in the previous question, then the program will show this prompt:
-
-```
-Would you like to analyze all shows or a specific title (A or S)? |
-```
-
-In both scenarios, answering with 'A' means the program will analyze all titles and answering with 'S' means the program will analyze a specific title.
-
-If you choose to analyze a specific movie, then this will be the next prompt that appears:
-
-```
-Movies you have watched:
-    30 for 30: The Two Escobars
-    Louis C.K.: Live at the Beacon Theater
-    The Invisible War
-Which title would you like to analyze? |
-```
-
-If you choose to analyze a specific show, then this will be the prompt that appears:
-
-```
-TV Shows you have watched:
-    Archer
-    Buffy the Vampire Slayer
-    Star Trek
-    The Office (U.S.)
-Which title would you like to analyze? |
-```
-
-### Choose data analysis option
-
-After you have answered all configuration questions, the final prompt will appear, asking you what data analysis option you would like the program to compute based on your specified data preferences:
-
-```
-Options for Data Analysis:
-    Countries
-    Device Types
-    Duration
-    Most Watched Days
-    Most Watched Episodes
-    Most Watched Movies
-    Most Watched Shows
-    Viewing Activity Timeline
-    Viewing Frequency
-    Viewing Heat Map
-Which option would you like to choose? |
-```
-
-Depending on your configurations, a couple of these options may not show up. Enter what you would like the program to do and then the output will appear in the form of a data visualization.
-
-Afterwards, the program will ask you whether you would like to continue:
-
-```
-Would you like to continue (Y or N)? |
-```
-
-If you choose to continue, then the process will restart (besides asking for the data file or time zone). If you choose to stop, then the program will terminate.
-
-## Output
-
-### Countries - All Profiles - All Content - All Titles
-
-### Countries - All Profiles - Movies - All Titles
-
-### Countries - All Profiles - Movies - Specific Title
-
-### Countries - All Profiles - TV Shows - All Titles
-
-### Countries - All Profiles - TV Shows - Specific Title
-
-### Countries - Specific Profile - All Content
-
-### Countries - Specific Profile - Movies - All Titles
-
-### Countries - Specific Profile - Movies - Specific Title
-
-### Countries - Specific Profile - TV Shows - All Titles
-
-### Countries - Specific Profile - TV Shows - Specific Title
-
-### Device Types - All Profiles - All Content - All Titles
-
-### Device Types - All Profiles - Movies - All Titles
-
-### Device Types - All Profiles - Movies - Specific Title
-
-### Device Types - All Profiles - TV Shows - All Titles
-
-### Device Types - All Profiles - TV Shows - Specific Title
-
-### Device Type - Specific Profile - All Content - All Titles
-
-### Device Type - Specific Profile - Movies - All Titles
-
-### Device Type - Specific Profile - Movies - Specific Title
-
-### Device Type - Specific Profile - TV Shows - All Titles
-
-### Device Type - Specific Profile - TV Shows - Specific Title
-
-### Duration - All Profiles - All Content - All Titles
-
-### Duration - All Profiles - Movies - All Titles
-
-### Duration - All Profiles - Movies - Specific Title
-
-### Duration - All Profiles - TV Shows - All Titles
-
-### Duration - All Profiles - TV Shows - Specific Title
-
-### Duration - Specific Profiles - All Content - All Titles
-
-### Duration - Specific Profiles - Movies - All Titles
-
-### Duration - Specific Profiles - Movies - Specific Title
-
-### Duration - Specific Profiles - TV Shows - All Titles
-
-### Duration - Specific Profiles - TV Shows - Specific Title
-
-### Most Watched Days - All Profiles - All Content - All Titles
-
-### Most Watched Days - All Profiles - Movies - All Titles
-
-### Most Watched Days - All Profiles - Movies - Specific Title
-
-### Most Watched Days - All Profiles - TV Shows - All Titles
-
-### Most Watched Days - All Profiles - TV Shows - Specific Title
-
-### Most Watched Days - Specific Profile - All Content - All Titles
-
-### Most Watched Days - Specific Profile - Movies - All Titles
-
-### Most Watched Days - Specific Profile - Movies - Specific Title
-
-### Most Watched Days - Specific Profile - TV Shows - All Titles
-
-### Most Watched Days - Specific Profile - TV Shows - Specific Title
-
-### Most Watched Episodes - All Profiles
-
-### Most Watched Episodes - Specific Profile
-
-### Most Watched Movies - All Profiles
-
-### Most Watched Movies - Specific Profile
-
-### Most Watched Shows - All Profiles
-
-### Most Watched Shows - All Profiles
-
-### Viewing Activity Timeline - All Profiles - All Content - All Titles
-
-### Viewing Activity Timeline - All Profiles - Movies - All Titles
-
-### Viewing Activity Timeline - All Profiles - Movies - Specific Title
-
-### Viewing Activity Timeline - All Profiles - TV Shows - All Titles
-
-### Viewing Activity Timeline - All Profiles - TV Shows - Specific Title
-
-### Viewing Activity Tiemline - Specific Profile - All Content - All Titles
-
-### Viewing Activity Timeline - Specific Profile - Movies - All Titles
-
-### Viewing Activity Timeline - Specific Profile - Movies - Specific Title
-
-### Viewing Activity Timeline - Specific Profile - TV Shows - All Titles
-
-### Viewing Activity Timeline - Specific Profile - TV Shows - Specific Title
-
-### Viewing Frequency - All Profiles - All Content - All Titles
-
-### Viewing Frequency - All Profiles - Movies - All Titles
-
-### Viewing Frequency - All Profiles - Movies - Specific Title
-
-### Viewing Frequency - All Profiles - TV Shows - All Titles
-
-### Viewing Frequency - All Profiles - TV Shows - Specific Title
-
-### Viewing Frequency - Specific Profile - All Content - All Titles
-
-### Viewing Frequency - Specific Profile - Movies - All Titles
-
-### Viewing Frequency - Specific Profile - Movies - Specific Title
-
-### Viewing Frequency - Specific Profile - TV Shows - All Titles
-
-### Viewing Frequency - Specific Profile - TV Shows - Specific Title
-
-### Viewing Heat Map - All Profiles - All Content - All Titles
-
-### Viewing Heat Map - All Profiles - Movies - All Titles
-
-### Viewing Heat Map - All Profiles - Movies - Specific Title
-
-### Viewing Heat Map - All Profiles - TV Shows - All Titles
-
-### Viewing Heat Map - All Profiles - TV Shows - Specific Title
-
-### Viewing Heat Map - Specific Profile - All Content - All Titles
-
-### Viewing Heat Map - Specific Profile - Movies - All Titles
-
-### Viewing Heat Map - Specific Profile - Movies - Specific Title
-
-### Viewing Heat Map - Specific Profile - TV Shows - All Titles
-
-### Viewing Heat Map - Specific Profile - TV Shows - Specific Title
+This project is licensed under the [MIT License](/LICENSE)

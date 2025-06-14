@@ -12,11 +12,6 @@ from datetime import datetime, timezone
 pd.options.mode.chained_assignment = None
 
 
-# TODO: STILL NEED TO IMPLEMENT: Most Watched Months, Start Times, AND Total Time Watched
-# TODO: EXPAND FUNCTIONALITY: Enable comparing multiple profiles or titles in one chart, Add filtering by date range (st.date_input or st.slider), Add Ability to search titles with st.text_input and fuzzy matching, Add multiple chart types, Export filtered dataset (st.download_button with df.to_csv()), Add PDF report generation (e.g., using matplotlib + fpdf or ReportLab), Add session history saving
-# TODO: TEST & DEBUG: Test with multiple real Netflix files (different formats, languages, profiles, etc.), Handle missing or malformed data more gracefully, Add logging for errors or corner cases, Unit test functions with pytest
-
-
 def load_data(data_file: str) -> pd.DataFrame:
     """
     Reads given CSV file that contains viewing activity.
