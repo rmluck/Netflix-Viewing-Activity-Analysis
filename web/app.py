@@ -9,8 +9,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 import os
+from io import BytesIO
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src import netflix_viewing_activity as netflix
+from src import viewing_activity_analysis as netflix
 
 
 st.title("Netflix Viewing Activity Analysis")
@@ -22,6 +23,9 @@ if uploaded_file:
     except Exception as e:
         st.error(f"Error loading file: {e}")
         st.stop()
+    
+    st.header("Filters")
+    st.sidebar.header("Analysis Settings")
 
     with open("data/time_zones.txt", "r") as time_zones_file:
         time_zones = [line.strip() for line in time_zones_file.readlines()]
@@ -70,7 +74,11 @@ if uploaded_file:
         st.session_state.analysis_history = []
 
     st.subheader("Analysis Results")
-    for label, figure in reversed(st.session_state.analysis_history):
+    for i, (label, figure) in enumerate(reversed(st.session_state.analysis_history)):
         st.markdown(f"**{label}**")
         st.pyplot(figure)
+        buffer = BytesIO()
+        figure.savefig(buffer, format="png", bbox_inches="tight")
+        buffer.seek(0)
+        st.download_button(label="Download Figure", data=buffer, file_name=f"{label.replace(" ", "_").lower()}.png", mime="image/png", key=f"download_{i}")
         st.markdown("---")
