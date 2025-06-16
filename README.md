@@ -6,7 +6,7 @@
 
 ## 📖 Overview
 
-This project is a web-based application that analyzes a user's Netflix viewing history by conducting statistical analysis using chosen filters and producing visualizations. This program provides meaningful long-term insights and trends to inform the user about their personal Netflix viewing habits which Netflix does not specifically provide themselves.
+Web application designed and developed using Python libraries to process and analyze Netflix viewing history, deployed with Streamlit. Generated visualizations and insights regarding viewing patterns based on frequency, duration, and location, providing comprehensive overview of user behavior.
 
 **Target Users** are anyone with access to their Netflix "ViewingActivity.csv" file who is curious about thier own watch patterns or wants to visualizes their habits.
 
