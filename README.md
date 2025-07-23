@@ -38,7 +38,7 @@ Web application designed and developed using Python libraries to process and ana
 
 ## 🌟 Features
 
-* **File Upload**: Upload your __ViewingActivity.csv__ file exported from Netflix.
+* **File Upload**: Upload your `ViewingActivity.csv` file exported from Netflix.
 * **Time Zone Support**: Convert all timestamps to your selected time zone.
 * **Profile Filter**: Choose between different user profiles on your account or All Profiles.
 * **Content Type Filter**: Limit analysis to Movies, TV Shows, or All Content.
@@ -85,7 +85,7 @@ To retrieve the .csv file containing the viewing activity data of your Netflix a
 
 ![](/static/img/netflix_get_my_info_page.png)
 
-Click the "Submit Request" button which will send a request to Netflix for your data. They will provide a downloadable report folder which contains various files, including one called __ViewingActivity.csv__. This is the file that contains the viewing activity data necessary for this program's input.
+Click the "Submit Request" button which will send a request to Netflix for your data. They will provide a downloadable report folder which contains various files, including one called `ViewingActivity.csv`. This is the file that contains the viewing activity data necessary for this program's input.
 
 ---
 
@@ -104,16 +104,16 @@ Click the "Submit Request" button which will send a request to Netflix for your 
 * Add the following analysis options: Most Watched Months, Start Times, Total Time Watched
 * Dark mode support and advanced theme customization
 * Session history saving
-* Export filtered dataset (__st.download_button__ with __df.to_csv()__)
-* Export all results in a zipped report format or as PDF (__matplotlib__ + __fpdf__ or __ReportLab__)
+* Export filtered dataset (`st.download_button` with `df.to_csv()`)
+* Export all results in a zipped report format or as PDF (`matplotlib` + `fpdf` or `ReportLab`)
 * Test with multiple real Netflix files (different formats, languages, profiles, etc.)
 * Handle missing or malformed data more gracefully
 * Add logging for errors or corner cases
-* Unit test functions with __pytest__
+* Unit test functions with `pytest`
 * Combine multiple profiles or titles into a merged view
 * Persistent dashboard layout
-* Filter by date range (__st.date_input__ or __st.slider__) or time of day
-* Search titles (__st.text_input__ and fuzzy matching)
+* Filter by date range (`st.date_input` or `st.slider`) or time of day
+* Search titles (`st.text_input` and fuzzy matching)
 
 ---
 
@@ -121,8 +121,8 @@ Click the "Submit Request" button which will send a request to Netflix for your 
 
 * Python
 * **Frontend**: [Streamlit](https://streamlit.io/)
-* **Data Analysis**: __pandas__, __numpy__
-* **Visualization**: __matplotlib__, __seaborn__
+* **Data Analysis**: `pandas`, `numpy`
+* **Visualization**: `matplotlib`, `seaborn`
 * **Deployment**: Streamlit Community Cloud
 
 ## 🙏 Contributions / Acknowledgements
